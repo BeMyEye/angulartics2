@@ -221,18 +221,7 @@ export class Angulartics2GoogleAnalytics {
     if (typeof ga === 'undefined') {
       return;
     }
-    // clean previously used dimensions and metrics that will not be overriden
-    this.dimensionsAndMetrics.forEach(elem => {
-      if (!properties.hasOwnProperty(elem)) {
-        ga('set', elem, undefined);
 
-        this.angulartics2.settings.ga.additionalAccountNames.forEach(
-          (accountName: string) => {
-            ga(`${accountName}.set`, elem, undefined);
-          },
-        );
-      }
-    });
     this.dimensionsAndMetrics = [];
 
     // add custom dimensions and metrics
