@@ -16,7 +16,8 @@
     "lint:fix": "ng lint --fix",
     "presemantic-release": "cp -R .git dist/packages-dist",
     "semantic-release": "cd dist/packages-dist && semantic-release",
-    "ghpages": "ng build --prod --no-progress --baseHref='/angulartics2/'"
+    "ghpages": "ng build --prod --no-progress --baseHref='/angulartics2/'",
+    "postinstall": "cp -r dist/packages-dist/ ./ && rm -rf dist/"
   },
   "private": true,
   "dependencies": {
