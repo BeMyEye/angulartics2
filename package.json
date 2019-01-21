@@ -16,9 +16,11 @@
     "lint:fix": "ng lint --fix",
     "presemantic-release": "cp -R .git dist/packages-dist",
     "semantic-release": "cd dist/packages-dist && semantic-release",
-    "ghpages": "ng build --prod --no-progress --baseHref='/angulartics2/'",
-    "postinstall": "cp -r dist/packages-dist/ ./ && rm -rf dist/"
+    "ghpages": "ng build --prod --no-progress --baseHref='/angulartics2/'"
   },
+  "main": "bundles/angulartics2.umd.js",
+  "metadata": "angulartics2.metadata.json",
+  "module": "fesm5/angulartics2.js",
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.2.0",
