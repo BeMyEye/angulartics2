@@ -19,6 +19,7 @@ const MODULE_NAMES = [
   'kissmetrics',
   'launch',
   'mixpanel',
+  'pyze',
   'piwik',
   'segment',
   'intercom',
@@ -27,6 +28,7 @@ const MODULE_NAMES = [
   'amplitude',
   'splunk',
   'ibm-digital-analytics',
+  'gosquared',
 ];
 
 

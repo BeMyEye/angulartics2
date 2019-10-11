@@ -30,10 +30,12 @@ Vendor-agnostic Analytics for Angular Applications. [angulartics.github.io/angul
 ## Dependencies
 Latest version available for each version of Angular
 
-| Angulartics2 | Angular |
-| ------------ | ------- |
-| 5.4.0        | 4.x     |
-| 6.3.1        | 5.x     |
+| Angulartics2 | Angular   |
+| ------------ | --------- |
+| 5.4.0        | 4.x       |
+| 6.3.1        | 5.x       |
+| 7.5.2        | 6.x - 7.x |
+| latest       | 8.x       |
 
 ## Installation
 
@@ -284,6 +286,7 @@ System.config({
 * [Clicky](/src/lib/providers/clicky)
 * [IBM Digital Analytics](/src/lib/providers/ibm-digital-analytics)
 * [Splunk](/src/lib/providers/splunk)
+* [Pyze](/src/lib/providers/pyze)
 
 ### For other providers
 
@@ -303,3 +306,6 @@ Please see the [CONTRIBUTING](https://github.com/angulartics/angulartics2/blob/m
 ## License
 
 [MIT](LICENSE)
+
+## Related Projects
++ [analytics-angular](https://github.com/segmentio/analytics-angular): Write analytics code once, collect customer data from any source, and send it to over 250+ destinations with [Segment](https://segment.com/).
