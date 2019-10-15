@@ -1,23 +1,14 @@
-import { Injectable, defineInjectable, inject } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class Angulartics2IBMDigitalAnalytics {
-    /**
-     * @param {?} angulartics2
-     */
+let Angulartics2IBMDigitalAnalytics = class Angulartics2IBMDigitalAnalytics {
     constructor(angulartics2) {
         this.angulartics2 = angulartics2;
         if (typeof window['cmCreatePageviewTag'] !== 'function') {
             console.warn('Angulartics 2 IBM Digital Analytics Plugin: eluminate.js is not loaded');
         }
     }
-    /**
-     * @return {?}
-     */
     startTracking() {
         this.angulartics2.pageTrack
             .pipe(this.angulartics2.filterDeveloperMode())
@@ -29,25 +20,21 @@ class Angulartics2IBMDigitalAnalytics {
     /**
      * Track Page in IBM Digital Analytics
      *
-     * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_pageviewtag.html
-     * @param {?} path location
+     * @param path location
      *
-     * @return {?}
+     * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_pageviewtag.html
      */
     pageTrack(path) {
-        /** @type {?} */
         const cmCreatePageviewTag = window['cmCreatePageviewTag'];
         cmCreatePageviewTag(path, null, null, null);
     }
     /**
      * Track an event in IBM Digital Analytics
      *
-     * @param {?} action A string corresponding to the type of event that needs to be tracked.
-     * @param {?=} properties The properties that need to be logged with the event.
-     * @return {?}
+     * @param action A string corresponding to the type of event that needs to be tracked.
+     * @param properties The properties that need to be logged with the event.
      */
     eventTrack(action, properties = {}) {
-        /** @type {?} */
         const cmDisplayShops = window['cmDisplayShops'];
         switch (action) {
             /**
@@ -58,7 +45,6 @@ class Angulartics2IBMDigitalAnalytics {
              * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_prodviewtag.html
              */
             case 'cmCreateProductviewTag':
-                /** @type {?} */
                 const cmCreateProductviewTag = window['cmCreateProductviewTag'];
                 cmCreateProductviewTag(properties.productId, properties.productName, properties.categoryId, properties.attrbute, properties.virtualCategory);
                 break;
@@ -69,7 +55,6 @@ class Angulartics2IBMDigitalAnalytics {
              * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_shopact5tag.html
              */
             case 'cmCreateShopAction5Tag':
-                /** @type {?} */
                 const cmCreateShopAction5Tag = window['cmCreateShopAction5Tag'];
                 cmCreateShopAction5Tag(properties.productId, properties.productName, properties.quantity, properties.unitPrice, properties.categoryId, properties.attrbute, properties.extraFields, properties.virtualCategory);
                 cmDisplayShops();
@@ -82,7 +67,6 @@ class Angulartics2IBMDigitalAnalytics {
              * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_shopact9tag.html
              */
             case 'cmCreateShopAction9Tag':
-                /** @type {?} */
                 const cmCreateShopAction9Tag = window['cmCreateShopAction9Tag'];
                 cmCreateShopAction9Tag(properties.productId, properties.productName, properties.quantity, properties.unitPrice, properties.registrationId, properties.orderId, properties.orderSubtotal, properties.categoryId, properties.attrbute, properties.extraFields);
                 cmDisplayShops();
@@ -94,7 +78,6 @@ class Angulartics2IBMDigitalAnalytics {
              * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_ordertag.html
              */
             case 'cmCreateOrderTag':
-                /** @type {?} */
                 const cmCreateOrderTag = window['cmCreateOrderTag'];
                 cmCreateOrderTag(properties.orderId, properties.orderSubtotal, properties.orderShipping, properties.registrationId, properties.registrantCity, properties.registrantState, properties.registrantPostalCode, properties.attrbute, properties.extraFields);
                 break;
@@ -105,7 +88,6 @@ class Angulartics2IBMDigitalAnalytics {
              * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_registrationtag.html
              */
             case 'cmCreateRegistrationTag':
-                /** @type {?} */
                 const cmCreateRegistrationTag = window['cmCreateRegistrationTag'];
                 cmCreateRegistrationTag(properties.registrationId, properties.registrantEmail, properties.registrantCity, properties.registrantState, properties.registrantPostalCode, properties.registrantCountry, properties.attrbute);
                 break;
@@ -116,7 +98,6 @@ class Angulartics2IBMDigitalAnalytics {
              * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_elementtag.html
              */
             case 'cmCreateElementTag':
-                /** @type {?} */
                 const cmCreateElementTag = window['cmCreateElementTag'];
                 cmCreateElementTag(properties.elementId, properties.elementCategory, properties.attrbute);
                 break;
@@ -128,7 +109,6 @@ class Angulartics2IBMDigitalAnalytics {
              * @link https://www.ibm.com/support/knowledgecenter/SSPG9M/Implementation/impl_conversioneventtag.html
              */
             case 'cmCreateConversionEventTag':
-                /** @type {?} */
                 const cmCreateConversionEventTag = window['cmCreateConversionEventTag'];
                 cmCreateConversionEventTag(properties.eventId, properties.actionType, properties.eventCategoryId, properties.points, properties.attrbute, properties.extraFields);
                 break;
@@ -136,21 +116,12 @@ class Angulartics2IBMDigitalAnalytics {
                 console.warn('Unsupported Event Action');
         }
     }
-}
-Angulartics2IBMDigitalAnalytics.decorators = [
-    { type: Injectable, args: [{ providedIn: 'root' },] }
-];
-/** @nocollapse */
-Angulartics2IBMDigitalAnalytics.ctorParameters = () => [
-    { type: Angulartics2 }
-];
-/** @nocollapse */ Angulartics2IBMDigitalAnalytics.ngInjectableDef = defineInjectable({ factory: function Angulartics2IBMDigitalAnalytics_Factory() { return new Angulartics2IBMDigitalAnalytics(inject(Angulartics2)); }, token: Angulartics2IBMDigitalAnalytics, providedIn: "root" });
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+};
+Angulartics2IBMDigitalAnalytics.ngInjectableDef = ɵɵdefineInjectable({ factory: function Angulartics2IBMDigitalAnalytics_Factory() { return new Angulartics2IBMDigitalAnalytics(ɵɵinject(Angulartics2)); }, token: Angulartics2IBMDigitalAnalytics, providedIn: "root" });
+Angulartics2IBMDigitalAnalytics = __decorate([
+    Injectable({ providedIn: 'root' }),
+    __metadata("design:paramtypes", [Angulartics2])
+], Angulartics2IBMDigitalAnalytics);
 
 export { Angulartics2IBMDigitalAnalytics };
-
 //# sourceMappingURL=angulartics2-ibm-digital-analytics.js.map

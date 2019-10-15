@@ -1,12 +1,9 @@
-import { Angulartics2, Angulartics2OnModule, ANGULARTICS2_TOKEN, RouterlessTracking } from 'angulartics2';
-import { Injectable, NgModule, defineInjectable, inject } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable, NgModule } from '@angular/core';
+import { ANGULARTICS2_TOKEN, RouterlessTracking, Angulartics2, Angulartics2OnModule } from 'angulartics2';
 import { TransitionService } from '@uirouter/core';
 import { Subject } from 'rxjs';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 /**
  * Track Route changes for applications using UI-Router
  *
@@ -18,28 +15,11 @@ var UIRouterTracking = /** @class */ (function () {
     function UIRouterTracking(transitionService) {
         this.transitionService = transitionService;
     }
-    /**
-     * @param {?} trans
-     * @return {?}
-     */
-    UIRouterTracking.prototype.path = /**
-     * @param {?} trans
-     * @return {?}
-     */
-    function (trans) {
+    UIRouterTracking.prototype.path = function (trans) {
         return trans.$to().url.format(trans.params());
     };
-    /**
-     * @param {?} settings
-     * @return {?}
-     */
-    UIRouterTracking.prototype.trackLocation = /**
-     * @param {?} settings
-     * @return {?}
-     */
-    function (settings) {
+    UIRouterTracking.prototype.trackLocation = function (settings) {
         var _this = this;
-        /** @type {?} */
         var subject = new Subject();
         this.transitionService.onSuccess({}, function (trans) {
             return subject.next({ url: _this.path(trans) });
@@ -48,47 +28,25 @@ var UIRouterTracking = /** @class */ (function () {
         });
         return subject;
     };
-    /**
-     * @param {?} url
-     * @return {?}
-     */
-    UIRouterTracking.prototype.prepareExternalUrl = /**
-     * @param {?} url
-     * @return {?}
-     */
-    function (url) {
+    UIRouterTracking.prototype.prepareExternalUrl = function (url) {
         return url;
     };
-    UIRouterTracking.decorators = [
-        { type: Injectable, args: [{ providedIn: 'root' },] }
-    ];
-    /** @nocollapse */
-    UIRouterTracking.ctorParameters = function () { return [
-        { type: TransitionService }
-    ]; };
-    /** @nocollapse */ UIRouterTracking.ngInjectableDef = defineInjectable({ factory: function UIRouterTracking_Factory() { return new UIRouterTracking(inject(TransitionService)); }, token: UIRouterTracking, providedIn: "root" });
+    UIRouterTracking.ngInjectableDef = ɵɵdefineInjectable({ factory: function UIRouterTracking_Factory() { return new UIRouterTracking(ɵɵinject(TransitionService)); }, token: UIRouterTracking, providedIn: "root" });
+    UIRouterTracking = __decorate([
+        Injectable({ providedIn: 'root' }),
+        __metadata("design:paramtypes", [TransitionService])
+    ], UIRouterTracking);
     return UIRouterTracking;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var Angulartics2UirouterModule = /** @class */ (function () {
     function Angulartics2UirouterModule() {
     }
-    /**
-     * @param {?=} settings
-     * @return {?}
-     */
-    Angulartics2UirouterModule.forRoot = /**
-     * @param {?=} settings
-     * @return {?}
-     */
-    function (settings) {
+    Angulartics2UirouterModule_1 = Angulartics2UirouterModule;
+    Angulartics2UirouterModule.forRoot = function (settings) {
         if (settings === void 0) { settings = {}; }
         return {
-            ngModule: Angulartics2UirouterModule,
+            ngModule: Angulartics2UirouterModule_1,
             providers: [
                 { provide: ANGULARTICS2_TOKEN, useValue: { settings: settings } },
                 { provide: RouterlessTracking, useClass: UIRouterTracking },
@@ -96,24 +54,14 @@ var Angulartics2UirouterModule = /** @class */ (function () {
             ],
         };
     };
-    Angulartics2UirouterModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [Angulartics2OnModule],
-                },] }
-    ];
+    var Angulartics2UirouterModule_1;
+    Angulartics2UirouterModule = Angulartics2UirouterModule_1 = __decorate([
+        NgModule({
+            imports: [Angulartics2OnModule],
+        })
+    ], Angulartics2UirouterModule);
     return Angulartics2UirouterModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
 export { Angulartics2UirouterModule, UIRouterTracking };
-
 //# sourceMappingURL=angulartics2-uiroutermodule.js.map

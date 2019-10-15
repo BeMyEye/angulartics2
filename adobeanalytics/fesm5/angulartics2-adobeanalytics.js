@@ -1,11 +1,8 @@
+import { __decorate, __metadata } from 'tslib';
 import { Location } from '@angular/common';
-import { Injectable, defineInjectable, inject } from '@angular/core';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var Angulartics2AdobeAnalytics = /** @class */ (function () {
     function Angulartics2AdobeAnalytics(angulartics2, location) {
         var _this = this;
@@ -14,13 +11,7 @@ var Angulartics2AdobeAnalytics = /** @class */ (function () {
         this.angulartics2.setUserProperties
             .subscribe(function (x) { return _this.setUserProperties(x); });
     }
-    /**
-     * @return {?}
-     */
-    Angulartics2AdobeAnalytics.prototype.startTracking = /**
-     * @return {?}
-     */
-    function () {
+    Angulartics2AdobeAnalytics.prototype.startTracking = function () {
         var _this = this;
         this.angulartics2.pageTrack
             .pipe(this.angulartics2.filterDeveloperMode())
@@ -29,15 +20,7 @@ var Angulartics2AdobeAnalytics = /** @class */ (function () {
             .pipe(this.angulartics2.filterDeveloperMode())
             .subscribe(function (x) { return _this.eventTrack(x.action, x.properties); });
     };
-    /**
-     * @param {?} path
-     * @return {?}
-     */
-    Angulartics2AdobeAnalytics.prototype.pageTrack = /**
-     * @param {?} path
-     * @return {?}
-     */
-    function (path) {
+    Angulartics2AdobeAnalytics.prototype.pageTrack = function (path) {
         if (typeof s !== 'undefined' && s) {
             s.clearVars();
             s.t({ pageName: path });
@@ -51,25 +34,7 @@ var Angulartics2AdobeAnalytics = /** @class */ (function () {
      *
      * @link https://marketing.adobe.com/resources/help/en_US/sc/implement/js_implementation.html
      */
-    /**
-     * Track Event in Adobe Analytics
-     *
-     * @link https://marketing.adobe.com/resources/help/en_US/sc/implement/js_implementation.html
-     * @param {?} action associated with the event
-     * @param {?} properties action detials
-     *
-     * @return {?}
-     */
-    Angulartics2AdobeAnalytics.prototype.eventTrack = /**
-     * Track Event in Adobe Analytics
-     *
-     * @link https://marketing.adobe.com/resources/help/en_US/sc/implement/js_implementation.html
-     * @param {?} action associated with the event
-     * @param {?} properties action detials
-     *
-     * @return {?}
-     */
-    function (action, properties) {
+    Angulartics2AdobeAnalytics.prototype.eventTrack = function (action, properties) {
         // TODO: make interface
         // @property {string} properties.category
         // @property {string} properties.label
@@ -84,12 +49,10 @@ var Angulartics2AdobeAnalytics = /** @class */ (function () {
             }
             if (action) {
                 // if linkName property is passed, use that; otherwise, the action is the linkName
-                /** @type {?} */
                 var linkName = (properties['linkName']) ? properties['linkName'] : action;
                 // note that 'this' should refer the link element, but we can't get that in this function. example:
                 // <a href="http://anothersite.com" onclick="s.tl(this,'e','AnotherSite',null)">
                 // if disableDelay property is passed, use that to turn off/on the 500ms delay; otherwise, it uses this
-                /** @type {?} */
                 var disableDelay = !!properties['disableDelay'] ? true : this;
                 // if action property is passed, use that; otherwise, the action remains unchanged
                 if (properties['action']) {
@@ -108,18 +71,8 @@ var Angulartics2AdobeAnalytics = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @private
-     * @return {?}
-     */
-    Angulartics2AdobeAnalytics.prototype.setPageName = /**
-     * @private
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    Angulartics2AdobeAnalytics.prototype.setPageName = function () {
         var path = this.location.path(true);
-        /** @type {?} */
         var hashNdx = path.indexOf('#');
         if (hashNdx > 0 && hashNdx < path.length) {
             s.pageName = path.substring(hashNdx + 1);
@@ -128,15 +81,7 @@ var Angulartics2AdobeAnalytics = /** @class */ (function () {
             s.pageName = path;
         }
     };
-    /**
-     * @param {?} properties
-     * @return {?}
-     */
-    Angulartics2AdobeAnalytics.prototype.setUserProperties = /**
-     * @param {?} properties
-     * @return {?}
-     */
-    function (properties) {
+    Angulartics2AdobeAnalytics.prototype.setUserProperties = function (properties) {
         if (typeof s !== 'undefined' && s) {
             if (typeof properties === 'object') {
                 for (var key in properties) {
@@ -147,23 +92,14 @@ var Angulartics2AdobeAnalytics = /** @class */ (function () {
             }
         }
     };
-    Angulartics2AdobeAnalytics.decorators = [
-        { type: Injectable, args: [{ providedIn: 'root' },] }
-    ];
-    /** @nocollapse */
-    Angulartics2AdobeAnalytics.ctorParameters = function () { return [
-        { type: Angulartics2 },
-        { type: Location }
-    ]; };
-    /** @nocollapse */ Angulartics2AdobeAnalytics.ngInjectableDef = defineInjectable({ factory: function Angulartics2AdobeAnalytics_Factory() { return new Angulartics2AdobeAnalytics(inject(Angulartics2), inject(Location)); }, token: Angulartics2AdobeAnalytics, providedIn: "root" });
+    Angulartics2AdobeAnalytics.ngInjectableDef = ɵɵdefineInjectable({ factory: function Angulartics2AdobeAnalytics_Factory() { return new Angulartics2AdobeAnalytics(ɵɵinject(Angulartics2), ɵɵinject(Location)); }, token: Angulartics2AdobeAnalytics, providedIn: "root" });
+    Angulartics2AdobeAnalytics = __decorate([
+        Injectable({ providedIn: 'root' }),
+        __metadata("design:paramtypes", [Angulartics2,
+            Location])
+    ], Angulartics2AdobeAnalytics);
     return Angulartics2AdobeAnalytics;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
 export { Angulartics2AdobeAnalytics };
-
 //# sourceMappingURL=angulartics2-adobeanalytics.js.map

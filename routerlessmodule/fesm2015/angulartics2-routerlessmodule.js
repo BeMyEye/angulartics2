@@ -1,18 +1,12 @@
+import { __decorate } from 'tslib';
 import { NgModule } from '@angular/core';
-import { Angulartics2, Angulartics2OnModule, ANGULARTICS2_TOKEN, RouterlessTracking } from 'angulartics2';
+import { ANGULARTICS2_TOKEN, RouterlessTracking, Angulartics2, Angulartics2OnModule } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class Angulartics2RouterlessModule {
-    /**
-     * @param {?=} settings
-     * @return {?}
-     */
+var Angulartics2RouterlessModule_1;
+let Angulartics2RouterlessModule = Angulartics2RouterlessModule_1 = class Angulartics2RouterlessModule {
     static forRoot(settings = {}) {
         return {
-            ngModule: Angulartics2RouterlessModule,
+            ngModule: Angulartics2RouterlessModule_1,
             providers: [
                 { provide: ANGULARTICS2_TOKEN, useValue: { settings } },
                 RouterlessTracking,
@@ -20,18 +14,12 @@ class Angulartics2RouterlessModule {
             ],
         };
     }
-}
-Angulartics2RouterlessModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [Angulartics2OnModule],
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+};
+Angulartics2RouterlessModule = Angulartics2RouterlessModule_1 = __decorate([
+    NgModule({
+        imports: [Angulartics2OnModule],
+    })
+], Angulartics2RouterlessModule);
 
 export { Angulartics2RouterlessModule };
-
 //# sourceMappingURL=angulartics2-routerlessmodule.js.map

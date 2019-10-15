@@ -1,11 +1,7 @@
-import { __assign, __values } from 'tslib';
-import { Injectable, defineInjectable, inject } from '@angular/core';
+import { __values, __decorate, __metadata, __assign } from 'tslib';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var GoogleAnalyticsDefaults = /** @class */ (function () {
     function GoogleAnalyticsDefaults() {
         this.additionalAccountNames = [];
@@ -20,7 +16,6 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
         var _this = this;
         this.angulartics2 = angulartics2;
         this.dimensionsAndMetrics = [];
-        /** @type {?} */
         var defaults = new GoogleAnalyticsDefaults();
         // Set the default settings for this module
         this.angulartics2.settings.ga = __assign({}, defaults, this.angulartics2.settings.ga);
@@ -28,13 +23,7 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
         this.angulartics2.setUsername.subscribe(function (x) { return _this.setUsername(x); });
         this.angulartics2.setUserProperties.subscribe(function (x) { return _this.setUserProperties(x); });
     }
-    /**
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.startTracking = /**
-     * @return {?}
-     */
-    function () {
+    Angulartics2GoogleAnalytics.prototype.startTracking = function () {
         var _this = this;
         this.angulartics2.pageTrack
             .pipe(this.angulartics2.filterDeveloperMode())
@@ -49,15 +38,7 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
             .pipe(this.angulartics2.filterDeveloperMode())
             .subscribe(function (x) { return _this.userTimings(x); });
     };
-    /**
-     * @param {?} path
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.pageTrack = /**
-     * @param {?} path
-     * @return {?}
-     */
-    function (path) {
+    Angulartics2GoogleAnalytics.prototype.pageTrack = function (path) {
         var e_1, _a, e_2, _b, e_3, _c, e_4, _d;
         if (typeof _gaq !== 'undefined' && _gaq) {
             _gaq.push(['_trackPageview', path]);
@@ -137,33 +118,7 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
      * @link https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#SettingUpEventTracking
      * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
      */
-    /**
-     * Track Event in GA
-     *
-     * @link https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#SettingUpEventTracking / https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-     * @param {?} action Associated with the event
-     * @param {?} properties Comprised of:
-     *  - category (string) and optional
-     *  - label (string)
-     *  - value (integer)
-     *  - noninteraction (boolean)
-     *
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.eventTrack = /**
-     * Track Event in GA
-     *
-     * @link https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#SettingUpEventTracking / https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-     * @param {?} action Associated with the event
-     * @param {?} properties Comprised of:
-     *  - category (string) and optional
-     *  - label (string)
-     *  - value (integer)
-     *  - noninteraction (boolean)
-     *
-     * @return {?}
-     */
-    function (action, properties) {
+    Angulartics2GoogleAnalytics.prototype.eventTrack = function (action, properties) {
         var e_5, _a;
         // Google Analytics requires an Event Category
         if (!properties || !properties.category) {
@@ -174,12 +129,10 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
         // https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#eventValue
         // https://github.com/luisfarzati/angulartics/issues/81
         if (properties.value) {
-            /** @type {?} */
             var parsed = parseInt(properties.value, 10);
             properties.value = isNaN(parsed) ? 0 : parsed;
         }
         if (typeof ga !== 'undefined') {
-            /** @type {?} */
             var eventOptions = {
                 eventCategory: properties.category,
                 eventAction: action,
@@ -236,38 +189,13 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
      *
      * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
      */
-    /**
-     * Exception Track Event in GA
-     *
-     * \@https://developers.google.com/analytics/devguides/collection/analyticsjs/exceptions
-     *
-     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-     * @param {?} properties Comprised of the optional fields:
-     *  - fatal (string)
-     *  - description (string)
-     *
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.exceptionTrack = /**
-     * Exception Track Event in GA
-     *
-     * \@https://developers.google.com/analytics/devguides/collection/analyticsjs/exceptions
-     *
-     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-     * @param {?} properties Comprised of the optional fields:
-     *  - fatal (string)
-     *  - description (string)
-     *
-     * @return {?}
-     */
-    function (properties) {
+    Angulartics2GoogleAnalytics.prototype.exceptionTrack = function (properties) {
         var e_6, _a;
         if (properties.fatal === undefined) {
             console.log('No "fatal" provided, sending with fatal=true');
             properties.fatal = true;
         }
         properties.exDescription = properties.description;
-        /** @type {?} */
         var eventOptions = {
             exFatal: properties.fatal,
             exDescription: properties.description,
@@ -289,7 +217,6 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
     };
     /**
      * User Timings Event in GA
-     * @name userTimings
      *
      * @param properties Comprised of the mandatory fields:
      *  - timingCategory (string)
@@ -300,35 +227,7 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
      *
      * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
      */
-    /**
-     * User Timings Event in GA
-     * \@name userTimings
-     *
-     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
-     * @param {?} properties Comprised of the mandatory fields:
-     *  - timingCategory (string)
-     *  - timingVar (string)
-     *  - timingValue (number)
-     * Properties can also have the optional fields:
-     *  - timingLabel (string)
-     *
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.userTimings = /**
-     * User Timings Event in GA
-     * \@name userTimings
-     *
-     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
-     * @param {?} properties Comprised of the mandatory fields:
-     *  - timingCategory (string)
-     *  - timingVar (string)
-     *  - timingValue (number)
-     * Properties can also have the optional fields:
-     *  - timingLabel (string)
-     *
-     * @return {?}
-     */
-    function (properties) {
+    Angulartics2GoogleAnalytics.prototype.userTimings = function (properties) {
         var e_7, _a;
         if (!properties ||
             !properties.timingCategory ||
@@ -354,43 +253,17 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} userId
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.setUsername = /**
-     * @param {?} userId
-     * @return {?}
-     */
-    function (userId) {
+    Angulartics2GoogleAnalytics.prototype.setUsername = function (userId) {
         this.angulartics2.settings.ga.userId = userId;
         if (typeof ga === 'undefined') {
             return;
         }
         ga('set', 'userId', userId);
     };
-    /**
-     * @param {?} properties
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.setUserProperties = /**
-     * @param {?} properties
-     * @return {?}
-     */
-    function (properties) {
+    Angulartics2GoogleAnalytics.prototype.setUserProperties = function (properties) {
         this.setDimensionsAndMetrics(properties);
     };
-    /**
-     * @private
-     * @param {?} properties
-     * @return {?}
-     */
-    Angulartics2GoogleAnalytics.prototype.setDimensionsAndMetrics = /**
-     * @private
-     * @param {?} properties
-     * @return {?}
-     */
-    function (properties) {
+    Angulartics2GoogleAnalytics.prototype.setDimensionsAndMetrics = function (properties) {
         var _this = this;
         if (typeof ga === 'undefined') {
             return;
@@ -408,22 +281,13 @@ var Angulartics2GoogleAnalytics = /** @class */ (function () {
             }
         });
     };
-    Angulartics2GoogleAnalytics.decorators = [
-        { type: Injectable, args: [{ providedIn: 'root' },] }
-    ];
-    /** @nocollapse */
-    Angulartics2GoogleAnalytics.ctorParameters = function () { return [
-        { type: Angulartics2 }
-    ]; };
-    /** @nocollapse */ Angulartics2GoogleAnalytics.ngInjectableDef = defineInjectable({ factory: function Angulartics2GoogleAnalytics_Factory() { return new Angulartics2GoogleAnalytics(inject(Angulartics2)); }, token: Angulartics2GoogleAnalytics, providedIn: "root" });
+    Angulartics2GoogleAnalytics.ngInjectableDef = ɵɵdefineInjectable({ factory: function Angulartics2GoogleAnalytics_Factory() { return new Angulartics2GoogleAnalytics(ɵɵinject(Angulartics2)); }, token: Angulartics2GoogleAnalytics, providedIn: "root" });
+    Angulartics2GoogleAnalytics = __decorate([
+        Injectable({ providedIn: 'root' }),
+        __metadata("design:paramtypes", [Angulartics2])
+    ], Angulartics2GoogleAnalytics);
     return Angulartics2GoogleAnalytics;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { GoogleAnalyticsDefaults, Angulartics2GoogleAnalytics };
-
+export { Angulartics2GoogleAnalytics, GoogleAnalyticsDefaults };
 //# sourceMappingURL=angulartics2-ga.js.map

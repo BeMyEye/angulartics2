@@ -1,3 +1,6 @@
+### The BeMyEye fork only removes the "clean previously used dimensions and metrics that will not be overriden" part in `src/lib/providers/ga/ga.ts`, because when we set a dimension, we don't want to have to set it at each event track.
+To update the lib, run `npm i` and `npm run build`, and commit all files.
+
 # angulartics2
 
 [![NPM version](https://img.shields.io/npm/v/angulartics2.svg)](https://npmjs.org/package/angulartics2) [![NPM downloads](https://img.shields.io/npm/dm/angulartics2.svg)](https://npmjs.org/package/angulartics2)

@@ -1,10 +1,7 @@
-import { Injectable, defineInjectable, inject } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class GoogleGlobalSiteTagDefaults {
     constructor() {
         this.trackingIds = [];
@@ -12,7 +9,6 @@ class GoogleGlobalSiteTagDefaults {
             // See: https://developers.google.com/analytics/devguides/collection/analyticsjs/ga-object-methods-reference
             ga(() => {
                 ga.getAll().forEach((tracker) => {
-                    /** @type {?} */
                     const id = tracker.get('trackingId');
                     // If set both in forRoot and HTML page, we want to avoid duplicates
                     if (id !== undefined && this.trackingIds.indexOf(id) === -1) {
@@ -23,21 +19,14 @@ class GoogleGlobalSiteTagDefaults {
         }
     }
 }
-class Angulartics2GoogleGlobalSiteTag {
-    /**
-     * @param {?} angulartics2
-     */
+let Angulartics2GoogleGlobalSiteTag = class Angulartics2GoogleGlobalSiteTag {
     constructor(angulartics2) {
         this.angulartics2 = angulartics2;
         this.dimensionsAndMetrics = {};
-        /** @type {?} */
-        const defaults = new GoogleGlobalSiteTagDefaults;
+        const defaults = new GoogleGlobalSiteTagDefaults();
         // Set the default settings for this module
         this.angulartics2.settings.gst = Object.assign({}, defaults, this.angulartics2.settings.gst);
     }
-    /**
-     * @return {?}
-     */
     startTracking() {
         this.angulartics2.pageTrack
             .pipe(this.angulartics2.filterDeveloperMode())
@@ -63,12 +52,10 @@ class Angulartics2GoogleGlobalSiteTag {
      *
      * https://developers.google.com/analytics/devguides/collection/gtagjs/single-page-applications#tracking_virtual_pageviews
      *
-     * @param {?} path relative url
-     * @return {?}
+     * @param path relative url
      */
     pageTrack(path) {
         if (typeof gtag !== 'undefined' && gtag) {
-            /** @type {?} */
             const params = Object.assign({ page_path: path, page_location: window.location.protocol + '//' + window.location.host + path }, this.dimensionsAndMetrics);
             // Custom map must be reset with all config to stay valid.
             if (this.angulartics2.settings.gst.customMap) {
@@ -90,9 +77,7 @@ class Angulartics2GoogleGlobalSiteTag {
      *
      * https://developers.google.com/analytics/devguides/collection/gtagjs/events
      *
-     * @param {?} action associated with the event
-     * @param {?=} properties
-     * @return {?}
+     * @param action associated with the event
      */
     eventTrack(action, properties = {}) {
         this.eventTrackInternal(action, Object.assign({ event_category: properties.category || 'interaction', event_label: properties.label, value: properties.value, non_interaction: properties.noninteraction }, properties.gstCustom));
@@ -102,8 +87,6 @@ class Angulartics2GoogleGlobalSiteTag {
      *
      * https://developers.google.com/analytics/devguides/collection/gtagjs/exceptions
      *
-     * @param {?} properties
-     * @return {?}
      */
     exceptionTrack(properties) {
         // TODO: make interface
@@ -116,22 +99,20 @@ class Angulartics2GoogleGlobalSiteTag {
         }
         properties.exDescription = properties.event ? properties.event.stack : properties.description;
         this.eventTrack('exception', {
-            gstCustom: Object.assign({ 'description': properties.exDescription, 'fatal': properties.fatal }, properties.gstCustom)
+            gstCustom: Object.assign({ description: properties.exDescription, fatal: properties.fatal }, properties.gstCustom)
         });
     }
     /**
      * User Timings Event in GST.
-     * \@name userTimings
      *
-     * @link https://developers.google.com/analytics/devguides/collection/gtagjs/user-timings
-     * @param {?} properties Comprised of the mandatory fields:
+     * @param properties Comprised of the mandatory fields:
      *  - name (string)
      *  - value (number - integer)
      * Properties can also have the optional fields:
      *  - category (string)
      *  - label (string)
      *
-     * @return {?}
+     * @link https://developers.google.com/analytics/devguides/collection/gtagjs/user-timings
      */
     userTimings(properties) {
         if (!properties) {
@@ -145,11 +126,6 @@ class Angulartics2GoogleGlobalSiteTag {
             event_label: properties.label
         });
     }
-    /**
-     * @private
-     * @param {?} properties
-     * @return {?}
-     */
     convertTimings(properties) {
         return {
             name: properties.timingVar,
@@ -158,34 +134,20 @@ class Angulartics2GoogleGlobalSiteTag {
             label: properties.timingLabel
         };
     }
-    /**
-     * @param {?} userId
-     * @return {?}
-     */
     setUsername(userId) {
         this.angulartics2.settings.gst.userId = userId;
         if (typeof gtag !== 'undefined' && gtag) {
-            gtag('set', { 'user_id': typeof userId === 'string' || !userId ? userId : userId.userId });
+            gtag('set', { user_id: typeof userId === 'string' || !userId ? userId : userId.userId });
         }
     }
-    /**
-     * @param {?} properties
-     * @return {?}
-     */
     setUserProperties(properties) {
         this.setDimensionsAndMetrics(properties);
     }
-    /**
-     * @private
-     * @param {?} properties
-     * @return {?}
-     */
     setDimensionsAndMetrics(properties) {
         // We want the dimensions and metrics to accumulate, so we merge with previous value
         this.dimensionsAndMetrics = Object.assign({}, this.dimensionsAndMetrics, properties);
         // Remove properties that are null or undefined
         Object.keys(this.dimensionsAndMetrics).forEach(key => {
-            /** @type {?} */
             const val = this.dimensionsAndMetrics[key];
             if (val === undefined || val === null) {
                 delete this.dimensionsAndMetrics[key];
@@ -195,47 +157,26 @@ class Angulartics2GoogleGlobalSiteTag {
             gtag('set', this.dimensionsAndMetrics);
         }
     }
-    /**
-     * @private
-     * @param {?} action
-     * @param {?=} properties
-     * @return {?}
-     */
     eventTrackInternal(action, properties = {}) {
         this.cleanProperties(properties);
         if (typeof gtag !== 'undefined' && gtag) {
             gtag('event', action, properties);
         }
     }
-    /**
-     * @private
-     * @param {?} properties
-     * @return {?}
-     */
     cleanProperties(properties) {
         // GA requires that eventValue be an non-negative integer, see:
         // https://developers.google.com/analytics/devguides/collection/gtagjs/events
         if (properties.value) {
-            /** @type {?} */
             const parsed = parseInt(properties.value, 10);
             properties.value = isNaN(parsed) ? 0 : parsed;
         }
     }
-}
-Angulartics2GoogleGlobalSiteTag.decorators = [
-    { type: Injectable, args: [{ providedIn: 'root' },] }
-];
-/** @nocollapse */
-Angulartics2GoogleGlobalSiteTag.ctorParameters = () => [
-    { type: Angulartics2 }
-];
-/** @nocollapse */ Angulartics2GoogleGlobalSiteTag.ngInjectableDef = defineInjectable({ factory: function Angulartics2GoogleGlobalSiteTag_Factory() { return new Angulartics2GoogleGlobalSiteTag(inject(Angulartics2)); }, token: Angulartics2GoogleGlobalSiteTag, providedIn: "root" });
+};
+Angulartics2GoogleGlobalSiteTag.ngInjectableDef = ɵɵdefineInjectable({ factory: function Angulartics2GoogleGlobalSiteTag_Factory() { return new Angulartics2GoogleGlobalSiteTag(ɵɵinject(Angulartics2)); }, token: Angulartics2GoogleGlobalSiteTag, providedIn: "root" });
+Angulartics2GoogleGlobalSiteTag = __decorate([
+    Injectable({ providedIn: 'root' }),
+    __metadata("design:paramtypes", [Angulartics2])
+], Angulartics2GoogleGlobalSiteTag);
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { GoogleGlobalSiteTagDefaults, Angulartics2GoogleGlobalSiteTag };
-
+export { Angulartics2GoogleGlobalSiteTag, GoogleGlobalSiteTagDefaults };
 //# sourceMappingURL=angulartics2-gst.js.map

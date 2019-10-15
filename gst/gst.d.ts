@@ -34,7 +34,6 @@ export declare class Angulartics2GoogleGlobalSiteTag {
     exceptionTrack(properties: any): void;
     /**
      * User Timings Event in GST.
-     * @name userTimings
      *
      * @param properties Comprised of the mandatory fields:
      *  - name (string)

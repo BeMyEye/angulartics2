@@ -1,12 +1,9 @@
-import { Angulartics2, Angulartics2OnModule, ANGULARTICS2_TOKEN, RouterlessTracking } from 'angulartics2';
-import { Injectable, NgModule, defineInjectable, inject } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable, NgModule } from '@angular/core';
+import { ANGULARTICS2_TOKEN, RouterlessTracking, Angulartics2, Angulartics2OnModule } from 'angulartics2';
 import { TransitionService } from '@uirouter/core';
 import { Subject } from 'rxjs';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 /**
  * Track Route changes for applications using UI-Router
  *
@@ -14,26 +11,14 @@ import { Subject } from 'rxjs';
  *
  * referenced: https://github.com/ui-router/sample-app-angular/blob/9adb533b85c0f0fccef23968489cca0a5ec84654/src/app/util/ga.ts
  */
-class UIRouterTracking {
-    /**
-     * @param {?} transitionService
-     */
+let UIRouterTracking = class UIRouterTracking {
     constructor(transitionService) {
         this.transitionService = transitionService;
     }
-    /**
-     * @param {?} trans
-     * @return {?}
-     */
     path(trans) {
         return trans.$to().url.format(trans.params());
     }
-    /**
-     * @param {?} settings
-     * @return {?}
-     */
     trackLocation(settings) {
-        /** @type {?} */
         const subject = new Subject();
         this.transitionService.onSuccess({}, trans => {
             return subject.next({ url: this.path(trans) });
@@ -42,35 +27,21 @@ class UIRouterTracking {
         });
         return subject;
     }
-    /**
-     * @param {?} url
-     * @return {?}
-     */
     prepareExternalUrl(url) {
         return url;
     }
-}
-UIRouterTracking.decorators = [
-    { type: Injectable, args: [{ providedIn: 'root' },] }
-];
-/** @nocollapse */
-UIRouterTracking.ctorParameters = () => [
-    { type: TransitionService }
-];
-/** @nocollapse */ UIRouterTracking.ngInjectableDef = defineInjectable({ factory: function UIRouterTracking_Factory() { return new UIRouterTracking(inject(TransitionService)); }, token: UIRouterTracking, providedIn: "root" });
+};
+UIRouterTracking.ngInjectableDef = ɵɵdefineInjectable({ factory: function UIRouterTracking_Factory() { return new UIRouterTracking(ɵɵinject(TransitionService)); }, token: UIRouterTracking, providedIn: "root" });
+UIRouterTracking = __decorate([
+    Injectable({ providedIn: 'root' }),
+    __metadata("design:paramtypes", [TransitionService])
+], UIRouterTracking);
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class Angulartics2UirouterModule {
-    /**
-     * @param {?=} settings
-     * @return {?}
-     */
+var Angulartics2UirouterModule_1;
+let Angulartics2UirouterModule = Angulartics2UirouterModule_1 = class Angulartics2UirouterModule {
     static forRoot(settings = {}) {
         return {
-            ngModule: Angulartics2UirouterModule,
+            ngModule: Angulartics2UirouterModule_1,
             providers: [
                 { provide: ANGULARTICS2_TOKEN, useValue: { settings } },
                 { provide: RouterlessTracking, useClass: UIRouterTracking },
@@ -78,23 +49,12 @@ class Angulartics2UirouterModule {
             ],
         };
     }
-}
-Angulartics2UirouterModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [Angulartics2OnModule],
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+};
+Angulartics2UirouterModule = Angulartics2UirouterModule_1 = __decorate([
+    NgModule({
+        imports: [Angulartics2OnModule],
+    })
+], Angulartics2UirouterModule);
 
 export { Angulartics2UirouterModule, UIRouterTracking };
-
 //# sourceMappingURL=angulartics2-uiroutermodule.js.map

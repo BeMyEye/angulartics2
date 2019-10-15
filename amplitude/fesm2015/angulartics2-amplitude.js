@@ -1,14 +1,8 @@
-import { Injectable, defineInjectable, inject } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class Angulartics2Amplitude {
-    /**
-     * @param {?} angulartics2
-     */
+let Angulartics2Amplitude = class Angulartics2Amplitude {
     constructor(angulartics2) {
         this.angulartics2 = angulartics2;
         this.angulartics2.setUsername
@@ -18,9 +12,6 @@ class Angulartics2Amplitude {
         this.angulartics2.setUserPropertiesOnce
             .subscribe((x) => this.setUserProperties(x));
     }
-    /**
-     * @return {?}
-     */
     startTracking() {
         this.angulartics2.pageTrack
             .pipe(this.angulartics2.filterDeveloperMode())
@@ -29,10 +20,6 @@ class Angulartics2Amplitude {
             .pipe(this.angulartics2.filterDeveloperMode())
             .subscribe((x) => this.eventTrack(x.action, x.properties));
     }
-    /**
-     * @param {?} path
-     * @return {?}
-     */
     pageTrack(path) {
         try {
             this.eventTrack('Pageview', {
@@ -45,11 +32,6 @@ class Angulartics2Amplitude {
             }
         }
     }
-    /**
-     * @param {?} action
-     * @param {?} properties
-     * @return {?}
-     */
     eventTrack(action, properties) {
         try {
             amplitude.getInstance().logEvent(action, properties);
@@ -60,10 +42,6 @@ class Angulartics2Amplitude {
             }
         }
     }
-    /**
-     * @param {?} userId
-     * @return {?}
-     */
     setUsername(userId) {
         try {
             amplitude.getInstance().setUserId(userId);
@@ -74,10 +52,6 @@ class Angulartics2Amplitude {
             }
         }
     }
-    /**
-     * @param {?} properties
-     * @return {?}
-     */
     setUserProperties(properties) {
         try {
             amplitude.getInstance().setUserProperties(properties);
@@ -88,21 +62,12 @@ class Angulartics2Amplitude {
             }
         }
     }
-}
-Angulartics2Amplitude.decorators = [
-    { type: Injectable, args: [{ providedIn: 'root' },] }
-];
-/** @nocollapse */
-Angulartics2Amplitude.ctorParameters = () => [
-    { type: Angulartics2 }
-];
-/** @nocollapse */ Angulartics2Amplitude.ngInjectableDef = defineInjectable({ factory: function Angulartics2Amplitude_Factory() { return new Angulartics2Amplitude(inject(Angulartics2)); }, token: Angulartics2Amplitude, providedIn: "root" });
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+};
+Angulartics2Amplitude.ngInjectableDef = ɵɵdefineInjectable({ factory: function Angulartics2Amplitude_Factory() { return new Angulartics2Amplitude(ɵɵinject(Angulartics2)); }, token: Angulartics2Amplitude, providedIn: "root" });
+Angulartics2Amplitude = __decorate([
+    Injectable({ providedIn: 'root' }),
+    __metadata("design:paramtypes", [Angulartics2])
+], Angulartics2Amplitude);
 
 export { Angulartics2Amplitude };
-
 //# sourceMappingURL=angulartics2-amplitude.js.map

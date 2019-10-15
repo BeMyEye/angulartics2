@@ -1,25 +1,15 @@
+import { __decorate } from 'tslib';
 import { NgModule } from '@angular/core';
-import { Angulartics2, Angulartics2OnModule, ANGULARTICS2_TOKEN, RouterlessTracking } from 'angulartics2';
+import { ANGULARTICS2_TOKEN, RouterlessTracking, Angulartics2, Angulartics2OnModule } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var Angulartics2RouterlessModule = /** @class */ (function () {
     function Angulartics2RouterlessModule() {
     }
-    /**
-     * @param {?=} settings
-     * @return {?}
-     */
-    Angulartics2RouterlessModule.forRoot = /**
-     * @param {?=} settings
-     * @return {?}
-     */
-    function (settings) {
+    Angulartics2RouterlessModule_1 = Angulartics2RouterlessModule;
+    Angulartics2RouterlessModule.forRoot = function (settings) {
         if (settings === void 0) { settings = {}; }
         return {
-            ngModule: Angulartics2RouterlessModule,
+            ngModule: Angulartics2RouterlessModule_1,
             providers: [
                 { provide: ANGULARTICS2_TOKEN, useValue: { settings: settings } },
                 RouterlessTracking,
@@ -27,19 +17,14 @@ var Angulartics2RouterlessModule = /** @class */ (function () {
             ],
         };
     };
-    Angulartics2RouterlessModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [Angulartics2OnModule],
-                },] }
-    ];
+    var Angulartics2RouterlessModule_1;
+    Angulartics2RouterlessModule = Angulartics2RouterlessModule_1 = __decorate([
+        NgModule({
+            imports: [Angulartics2OnModule],
+        })
+    ], Angulartics2RouterlessModule);
     return Angulartics2RouterlessModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
 export { Angulartics2RouterlessModule };
-
 //# sourceMappingURL=angulartics2-routerlessmodule.js.map

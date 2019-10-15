@@ -1,10 +1,7 @@
-import { Injectable, defineInjectable, inject } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class GoogleAnalyticsDefaults {
     constructor() {
         this.additionalAccountNames = [];
@@ -13,14 +10,10 @@ class GoogleAnalyticsDefaults {
         this.anonymizeIp = false;
     }
 }
-class Angulartics2GoogleAnalytics {
-    /**
-     * @param {?} angulartics2
-     */
+let Angulartics2GoogleAnalytics = class Angulartics2GoogleAnalytics {
     constructor(angulartics2) {
         this.angulartics2 = angulartics2;
         this.dimensionsAndMetrics = [];
-        /** @type {?} */
         const defaults = new GoogleAnalyticsDefaults();
         // Set the default settings for this module
         this.angulartics2.settings.ga = Object.assign({}, defaults, this.angulartics2.settings.ga);
@@ -28,9 +21,6 @@ class Angulartics2GoogleAnalytics {
         this.angulartics2.setUsername.subscribe((x) => this.setUsername(x));
         this.angulartics2.setUserProperties.subscribe(x => this.setUserProperties(x));
     }
-    /**
-     * @return {?}
-     */
     startTracking() {
         this.angulartics2.pageTrack
             .pipe(this.angulartics2.filterDeveloperMode())
@@ -45,10 +35,6 @@ class Angulartics2GoogleAnalytics {
             .pipe(this.angulartics2.filterDeveloperMode())
             .subscribe(x => this.userTimings(x));
     }
-    /**
-     * @param {?} path
-     * @return {?}
-     */
     pageTrack(path) {
         if (typeof _gaq !== 'undefined' && _gaq) {
             _gaq.push(['_trackPageview', path]);
@@ -78,15 +64,15 @@ class Angulartics2GoogleAnalytics {
     /**
      * Track Event in GA
      *
-     * @link https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#SettingUpEventTracking / https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-     * @param {?} action Associated with the event
-     * @param {?} properties Comprised of:
+     * @param action Associated with the event
+     * @param properties Comprised of:
      *  - category (string) and optional
      *  - label (string)
      *  - value (integer)
      *  - noninteraction (boolean)
      *
-     * @return {?}
+     * @link https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#SettingUpEventTracking
+     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
      */
     eventTrack(action, properties) {
         // Google Analytics requires an Event Category
@@ -98,12 +84,10 @@ class Angulartics2GoogleAnalytics {
         // https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#eventValue
         // https://github.com/luisfarzati/angulartics/issues/81
         if (properties.value) {
-            /** @type {?} */
             const parsed = parseInt(properties.value, 10);
             properties.value = isNaN(parsed) ? 0 : parsed;
         }
         if (typeof ga !== 'undefined') {
-            /** @type {?} */
             const eventOptions = {
                 eventCategory: properties.category,
                 eventAction: action,
@@ -142,14 +126,13 @@ class Angulartics2GoogleAnalytics {
     /**
      * Exception Track Event in GA
      *
-     * \@https://developers.google.com/analytics/devguides/collection/analyticsjs/exceptions
-     *
-     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-     * @param {?} properties Comprised of the optional fields:
+     * @param properties Comprised of the optional fields:
      *  - fatal (string)
      *  - description (string)
      *
-     * @return {?}
+     * @https://developers.google.com/analytics/devguides/collection/analyticsjs/exceptions
+     *
+     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
      */
     exceptionTrack(properties) {
         if (properties.fatal === undefined) {
@@ -157,7 +140,6 @@ class Angulartics2GoogleAnalytics {
             properties.fatal = true;
         }
         properties.exDescription = properties.description;
-        /** @type {?} */
         const eventOptions = {
             exFatal: properties.fatal,
             exDescription: properties.description,
@@ -169,17 +151,15 @@ class Angulartics2GoogleAnalytics {
     }
     /**
      * User Timings Event in GA
-     * \@name userTimings
      *
-     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
-     * @param {?} properties Comprised of the mandatory fields:
+     * @param properties Comprised of the mandatory fields:
      *  - timingCategory (string)
      *  - timingVar (string)
      *  - timingValue (number)
      * Properties can also have the optional fields:
      *  - timingLabel (string)
      *
-     * @return {?}
+     * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
      */
     userTimings(properties) {
         if (!properties ||
@@ -196,10 +176,6 @@ class Angulartics2GoogleAnalytics {
             }
         }
     }
-    /**
-     * @param {?} userId
-     * @return {?}
-     */
     setUsername(userId) {
         this.angulartics2.settings.ga.userId = userId;
         if (typeof ga === 'undefined') {
@@ -207,18 +183,9 @@ class Angulartics2GoogleAnalytics {
         }
         ga('set', 'userId', userId);
     }
-    /**
-     * @param {?} properties
-     * @return {?}
-     */
     setUserProperties(properties) {
         this.setDimensionsAndMetrics(properties);
     }
-    /**
-     * @private
-     * @param {?} properties
-     * @return {?}
-     */
     setDimensionsAndMetrics(properties) {
         if (typeof ga === 'undefined') {
             return;
@@ -236,21 +203,12 @@ class Angulartics2GoogleAnalytics {
             }
         });
     }
-}
-Angulartics2GoogleAnalytics.decorators = [
-    { type: Injectable, args: [{ providedIn: 'root' },] }
-];
-/** @nocollapse */
-Angulartics2GoogleAnalytics.ctorParameters = () => [
-    { type: Angulartics2 }
-];
-/** @nocollapse */ Angulartics2GoogleAnalytics.ngInjectableDef = defineInjectable({ factory: function Angulartics2GoogleAnalytics_Factory() { return new Angulartics2GoogleAnalytics(inject(Angulartics2)); }, token: Angulartics2GoogleAnalytics, providedIn: "root" });
+};
+Angulartics2GoogleAnalytics.ngInjectableDef = ɵɵdefineInjectable({ factory: function Angulartics2GoogleAnalytics_Factory() { return new Angulartics2GoogleAnalytics(ɵɵinject(Angulartics2)); }, token: Angulartics2GoogleAnalytics, providedIn: "root" });
+Angulartics2GoogleAnalytics = __decorate([
+    Injectable({ providedIn: 'root' }),
+    __metadata("design:paramtypes", [Angulartics2])
+], Angulartics2GoogleAnalytics);
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { GoogleAnalyticsDefaults, Angulartics2GoogleAnalytics };
-
+export { Angulartics2GoogleAnalytics, GoogleAnalyticsDefaults };
 //# sourceMappingURL=angulartics2-ga.js.map

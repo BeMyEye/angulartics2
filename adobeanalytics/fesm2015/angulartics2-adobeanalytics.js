@@ -1,25 +1,15 @@
+import { __decorate, __metadata } from 'tslib';
 import { Location } from '@angular/common';
-import { Injectable, defineInjectable, inject } from '@angular/core';
+import { ɵɵdefineInjectable, ɵɵinject, Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class Angulartics2AdobeAnalytics {
-    /**
-     * @param {?} angulartics2
-     * @param {?} location
-     */
+let Angulartics2AdobeAnalytics = class Angulartics2AdobeAnalytics {
     constructor(angulartics2, location) {
         this.angulartics2 = angulartics2;
         this.location = location;
         this.angulartics2.setUserProperties
             .subscribe((x) => this.setUserProperties(x));
     }
-    /**
-     * @return {?}
-     */
     startTracking() {
         this.angulartics2.pageTrack
             .pipe(this.angulartics2.filterDeveloperMode())
@@ -28,10 +18,6 @@ class Angulartics2AdobeAnalytics {
             .pipe(this.angulartics2.filterDeveloperMode())
             .subscribe((x) => this.eventTrack(x.action, x.properties));
     }
-    /**
-     * @param {?} path
-     * @return {?}
-     */
     pageTrack(path) {
         if (typeof s !== 'undefined' && s) {
             s.clearVars();
@@ -41,11 +27,10 @@ class Angulartics2AdobeAnalytics {
     /**
      * Track Event in Adobe Analytics
      *
-     * @link https://marketing.adobe.com/resources/help/en_US/sc/implement/js_implementation.html
-     * @param {?} action associated with the event
-     * @param {?} properties action detials
+     * @param action associated with the event
+     * @param properties action detials
      *
-     * @return {?}
+     * @link https://marketing.adobe.com/resources/help/en_US/sc/implement/js_implementation.html
      */
     eventTrack(action, properties) {
         // TODO: make interface
@@ -62,12 +47,10 @@ class Angulartics2AdobeAnalytics {
             }
             if (action) {
                 // if linkName property is passed, use that; otherwise, the action is the linkName
-                /** @type {?} */
                 const linkName = (properties['linkName']) ? properties['linkName'] : action;
                 // note that 'this' should refer the link element, but we can't get that in this function. example:
                 // <a href="http://anothersite.com" onclick="s.tl(this,'e','AnotherSite',null)">
                 // if disableDelay property is passed, use that to turn off/on the 500ms delay; otherwise, it uses this
-                /** @type {?} */
                 const disableDelay = !!properties['disableDelay'] ? true : this;
                 // if action property is passed, use that; otherwise, the action remains unchanged
                 if (properties['action']) {
@@ -86,14 +69,8 @@ class Angulartics2AdobeAnalytics {
             }
         }
     }
-    /**
-     * @private
-     * @return {?}
-     */
     setPageName() {
-        /** @type {?} */
         const path = this.location.path(true);
-        /** @type {?} */
         const hashNdx = path.indexOf('#');
         if (hashNdx > 0 && hashNdx < path.length) {
             s.pageName = path.substring(hashNdx + 1);
@@ -102,10 +79,6 @@ class Angulartics2AdobeAnalytics {
             s.pageName = path;
         }
     }
-    /**
-     * @param {?} properties
-     * @return {?}
-     */
     setUserProperties(properties) {
         if (typeof s !== 'undefined' && s) {
             if (typeof properties === 'object') {
@@ -117,22 +90,13 @@ class Angulartics2AdobeAnalytics {
             }
         }
     }
-}
-Angulartics2AdobeAnalytics.decorators = [
-    { type: Injectable, args: [{ providedIn: 'root' },] }
-];
-/** @nocollapse */
-Angulartics2AdobeAnalytics.ctorParameters = () => [
-    { type: Angulartics2 },
-    { type: Location }
-];
-/** @nocollapse */ Angulartics2AdobeAnalytics.ngInjectableDef = defineInjectable({ factory: function Angulartics2AdobeAnalytics_Factory() { return new Angulartics2AdobeAnalytics(inject(Angulartics2), inject(Location)); }, token: Angulartics2AdobeAnalytics, providedIn: "root" });
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+};
+Angulartics2AdobeAnalytics.ngInjectableDef = ɵɵdefineInjectable({ factory: function Angulartics2AdobeAnalytics_Factory() { return new Angulartics2AdobeAnalytics(ɵɵinject(Angulartics2), ɵɵinject(Location)); }, token: Angulartics2AdobeAnalytics, providedIn: "root" });
+Angulartics2AdobeAnalytics = __decorate([
+    Injectable({ providedIn: 'root' }),
+    __metadata("design:paramtypes", [Angulartics2,
+        Location])
+], Angulartics2AdobeAnalytics);
 
 export { Angulartics2AdobeAnalytics };
-
 //# sourceMappingURL=angulartics2-adobeanalytics.js.map

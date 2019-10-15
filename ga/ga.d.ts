@@ -40,7 +40,6 @@ export declare class Angulartics2GoogleAnalytics {
     exceptionTrack(properties: any): void;
     /**
      * User Timings Event in GA
-     * @name userTimings
      *
      * @param properties Comprised of the mandatory fields:
      *  - timingCategory (string)
